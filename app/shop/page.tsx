@@ -21,6 +21,7 @@ const PRODUCTS: Product[] = [
     { id: '4', name: 'Emerald Wyvern', price: 45.99, image: '/products/wyvern.jpg', category: 'Animals', badge: 'Retiring Soon', rating: 5, reviews: 15, isNew: false },
     { id: '5', name: 'Clockwork Heart', price: 34.99, image: '/products/heart.jpeg', category: 'Technic', badge: null, rating: 4, reviews: 6, isNew: false },
     { id: '6', name: 'Space Explorer', price: 12.99, image: '/products/astronaut.png', category: 'Space', badge: 'Popular', rating: 5, reviews: 3, isNew: false },
+    { id: '7', name: 'Planetary Gear Fidget', price: 9.99, image: '', category: 'Space', badge: 'New', rating: 5, reviews: 2, isNew: true}
 ];
 
 export default function UnifiedShop() {
