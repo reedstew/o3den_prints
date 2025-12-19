@@ -31,7 +31,7 @@ export default function LandingPage() {
                             🐉
                         </div>
                         <div className="absolute bottom-4 right-4 bg-[#ffcf00] text-black p-4 rounded-lg font-black text-xl shadow-xl transform rotate-3">
-                            325 PCS
+                            $9.99
                         </div>
                     </div>
                 </div>
