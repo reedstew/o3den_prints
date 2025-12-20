@@ -1,67 +1,83 @@
 import React from 'react';
-import './globals.css'
-import { ChevronRight } from "lucide-react";
+import Image from 'next/image';
+import { ArrowRight, MoveRight } from "lucide-react";
 
 export default function LandingPage() {
     return (
-        <div className="min-h-screen">
-            {/* Hero Banner - Lego Blue Style */}
-            <section className="bg-[#206db5] text-white relative overflow-hidden">
-                <div className="max-w-7xl mx-auto px-4 py-16 md:py-24 flex flex-col md:flex-row items-center gap-12">
-                    <div className="flex-1 space-y-6 z-10">
-                        <span className="inline-block bg-[#ffcf00] text-black font-black px-4 py-1 text-sm uppercase tracking-widest">
-                            New Exclusive
-                        </span>
-                        <h1 className="text-5xl md:text-7xl font-black uppercase italic leading-none">
-                            Build Your <br /> Imagination
-                        </h1>
-                        <p className="text-xl font-medium max-w-lg">
-                            Discover the latest 3D printed masterpieces. From articulated dragons to functional builds.
+        <div className="min-h-screen bg-white text-black">
+            {/* Minimalist Studio Hero */}
+            <section className="relative min-h-[90vh] flex items-center pt-24 overflow-hidden">
+                <div className="max-w-7xl mx-auto px-6 w-full grid md:grid-cols-2 items-center gap-16">
+                    <div className="space-y-10 z-10">
+                        <div className="space-y-4">
+                            <span className="inline-block text-[10px] font-bold uppercase tracking-[0.4em] text-[#064e3b]">
+                                Selected Works / 2025
+                            </span>
+                            <h1 className="text-6xl md:text-9xl font-light tracking-tighter leading-[0.85]">
+                                Precision <br />
+                                <span className="font-bold italic">Manufactured.</span>
+                            </h1>
+                        </div>
+
+                        <p className="text-xl md:text-2xl font-light max-w-md leading-relaxed tracking-tight text-gray-600">
+                            The intersection of digital architectural design and high-fidelity 3D manufacturing.
                         </p>
-                        <div className="flex flex-wrap gap-4 pt-4">
-                            <a href="/shop" className="bg-[#d0021b] hover:bg-[#b00217] text-white px-8 py-4 rounded-full font-bold text-lg flex items-center gap-2 shadow-[0px_4px_0px_0px_rgba(0,0,0,0.2)] active:translate-y-1 active:shadow-none transition-all">
-                                Shop Now <ChevronRight className="w-5 h-5" />
+
+                        <div className="flex flex-wrap gap-6 pt-4">
+                            <a href="/shop" className="group bg-black text-white px-10 py-5 uppercase text-[10px] font-bold tracking-[0.3em] flex items-center gap-4 hover:bg-[#064e3b] transition-all duration-500">
+                                Explore Collection <MoveRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
                             </a>
                         </div>
                     </div>
 
-                    {/* Placeholder for "Feature Build" Image */}
-                    <div className="flex-1 relative">
-                        <div className="w-full h-[400px] bg-white/10 rounded-3xl flex items-center justify-center text-9xl animate-bounce">
-                            🐉
+                    {/* High-End Feature Visual */}
+                    <div className="relative aspect-[4/5] md:aspect-square bg-[#f8f8f8] overflow-hidden">
+                        <div className="absolute inset-0 flex items-center justify-center text-[15rem] grayscale opacity-10 font-bold italic select-none">
+                            O3D
                         </div>
-                        <div className="absolute bottom-4 right-4 bg-[#ffcf00] text-black p-4 rounded-lg font-black text-xl shadow-xl transform rotate-3">
-                            $9.99
+                        {/* Replace with a professional render of your top product */}
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <span className="text-9xl group-hover:scale-110 transition-transform duration-700">🐉</span>
+                        </div>
+                        <div className="absolute bottom-10 right-10 bg-white border border-gray-100 p-6 shadow-xl backdrop-blur-sm">
+                            <p className="text-[10px] font-bold uppercase tracking-widest text-[#064e3b] mb-1">Price Point</p>
+                            <p className="text-3xl font-light tracking-tighter">$9.99</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Shop by Category - The "Lego Tile" Look */}
-            <section className="py-16 max-w-7xl mx-auto px-4">
-                <h2 className="text-3xl font-black uppercase mb-8 flex items-center gap-4">
-                    Shop by Category
-                    <div className="h-1 bg-gray-200 flex-grow"></div>
-                </h2>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    {['Dragons', 'Mechanical', 'Decor', 'Custom'].map((cat) => (
-                        <a key={cat} href={`/shop/${cat.toLowerCase()}`} className="group block text-center">
-                            <div className="aspect-square bg-gray-100 rounded-2xl flex items-center justify-center text-5xl group-hover:bg-gray-200 transition-colors border-b-4 border-gray-300">
-                                {cat === 'Dragons' ? '🐲' : cat === 'Mechanical' ? '⚙️' : cat === 'Decor' ? '🏺' : '🎨'}
+            {/* Curated Categories */}
+            <section className="py-32 max-w-7xl mx-auto px-6">
+                <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+                    <h2 className="text-4xl md:text-6xl font-bold tracking-tighter italic">
+                        Curated <br /> Categories
+                    </h2>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-400 mb-2">01 — Specialized Series</p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-px bg-gray-200 border border-gray-200">
+                    {['Animals', 'Technic', 'Decor', 'Custom'].map((cat) => (
+                        <a key={cat} href={`/shop/${cat.toLowerCase()}`} className="group relative bg-white aspect-[3/4] flex flex-col items-center justify-center p-8 overflow-hidden">
+                            <div className="absolute inset-0 bg-[#064e3b] opacity-0 group-hover:opacity-100 transition-all duration-700 -translate-y-full group-hover:translate-y-0" />
+                            <div className="text-6xl mb-6 relative z-10 group-hover:scale-125 transition-transform duration-500 grayscale group-hover:grayscale-0">
+                                {cat === 'Animals' ? '🐲' : cat === 'Technic' ? '⚙️' : cat === 'Decor' ? '🏺' : '🎨'}
                             </div>
-                            <h3 className="mt-4 font-bold uppercase tracking-tight group-hover:underline decoration-2">{cat}</h3>
+                            <h3 className="relative z-10 font-bold uppercase text-[10px] tracking-[0.3em] text-gray-400 group-hover:text-white transition-colors">
+                                {cat}
+                            </h3>
                         </a>
                     ))}
                 </div>
             </section>
 
-            {/* Featured Product Card */}
-            <section className="py-16 bg-gray-50">
-                <div className="max-w-7xl mx-auto px-4">
-                    <div className="grid md:grid-cols-3 gap-8">
-                        <ProductCard name="Emerald Wyvern" price={45.99} image="🐉" />
-                        <ProductCard name="Clockwork Heart" price={29.99} image="⚙️" />
-                        <ProductCard name="Crystal Tower" price={19.99} image="🏰" isNew />
+            {/* Featured Selection Grid */}
+            <section className="py-32 bg-[#f8f8f8]">
+                <div className="max-w-7xl mx-auto px-6">
+                    <div className="grid md:grid-cols-3 gap-16">
+                        <ProductCard name="Emerald Wyvern" price={45.99} image="🐉" category="COLLECTION 01" />
+                        <ProductCard name="Clockwork Heart" price={29.99} image="⚙️" category="TECHNIC" />
+                        <ProductCard name="Crystal Tower" price={19.99} image="🏰" category="DECOR" isNew />
                     </div>
                 </div>
             </section>
@@ -73,25 +89,35 @@ interface CardProps {
     name: string;
     price: number;
     image: string;
+    category: string;
     isNew?: boolean;
 }
 
-function ProductCard({ name, price, image, isNew }: CardProps) {
+function ProductCard({ name, price, image, category, isNew }: CardProps) {
     return (
-        <div className="bg-white border-2 border-gray-100 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow flex flex-col">
-            <div className="relative aspect-[4/5] bg-gray-100 flex items-center justify-center text-8xl">
+        <div className="group flex flex-col space-y-6">
+            <div className="relative aspect-[4/5] bg-white overflow-hidden flex items-center justify-center text-8xl grayscale group-hover:grayscale-0 transition-all duration-700">
                 {isNew && (
-                    <span className="absolute top-4 left-4 bg-[#ffcf00] text-black font-black text-xs px-2 py-1 uppercase italic">
+                    <span className="absolute top-6 left-6 z-10 bg-[#064e3b] text-white text-[9px] font-bold px-3 py-1 uppercase tracking-widest">
                         New
                     </span>
                 )}
-                {image}
+                <div className="group-hover:scale-110 transition-transform duration-700">
+                    {image}
+                </div>
             </div>
-            <div className="p-6 flex flex-col flex-grow">
-                <h3 className="font-black uppercase text-xl mb-2">{name}</h3>
-                <p className="text-2xl font-bold mb-6">${price}</p>
-                <button className="mt-auto w-full bg-[#ffcf00] hover:bg-[#e6bb00] text-black font-black py-3 rounded-md shadow-[0px_3px_0px_0px_#cc9900] active:translate-y-[2px] active:shadow-none transition-all uppercase text-sm tracking-widest">
-                    Add to Bag
+            <div className="space-y-2">
+                <div className="flex justify-between items-end">
+                    <div>
+                        <p className="text-[9px] font-bold tracking-[0.2em] text-gray-400 mb-1 uppercase">{category}</p>
+                        <h3 className="text-xl font-bold uppercase tracking-tighter text-black leading-none group-hover:underline decoration-1 underline-offset-4 italic">
+                            {name}
+                        </h3>
+                    </div>
+                    <p className="text-xl font-light tracking-tighter text-black">${price}</p>
+                </div>
+                <button className="w-full mt-4 border border-black text-black px-8 py-3 uppercase text-[9px] font-bold tracking-[0.2em] hover:bg-black hover:text-white transition-all duration-500 flex items-center justify-center gap-2">
+                    Enquire <ArrowRight className="w-3 h-3" />
                 </button>
             </div>
         </div>

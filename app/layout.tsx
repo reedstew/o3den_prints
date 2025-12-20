@@ -1,41 +1,99 @@
 import './globals.css';
 import Link from 'next/link';
-import { Printer, ShoppingCart, User, Search } from 'lucide-react';
+import Image from 'next/image'; // Import the Image component
+import { ShoppingBag, Search, Menu } from 'lucide-react';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en">
-        <body className="antialiased bg-white text-gray-900">
-        {/* Lego-Style Top Bar */}
-        <header className="sticky top-0 z-[100] w-full">
-            <div className="bg-[#ffcf00] h-1.5 w-full"></div> {/* Lego Yellow Stripe */}
-            <nav className="bg-white border-b-2 border-gray-100 px-4 h-20">
-                <div className="max-w-7xl mx-auto flex items-center justify-between h-full">
-                    <div className="flex items-center gap-8">
-                        <Link href="/" className="flex items-center gap-2">
-                            <div className="bg-[#d0021b] p-2 rounded-sm shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)]">
-                                <Printer className="w-8 h-8 text-white" />
-                            </div>
-                            <span className="text-2xl font-black uppercase tracking-tighter italic">O3Den</span>
-                        </Link>
-                        <div className="hidden md:flex gap-6 font-bold uppercase text-sm tracking-wide">
-                            <Link href="/shop" className="hover:underline decoration-4 underline-offset-8">Shop</Link>
-                            <Link href="/about" className="hover:underline decoration-4 underline-offset-8">About</Link>
+        <body className="antialiased bg-white text-black selection:bg-[#064e3b] selection:text-white">
+        <header className="sticky top-0 z-[100] w-full bg-white/90 backdrop-blur-md border-b border-gray-100">
+            <nav className="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+
+                {/* --- BRAND IDENTITY WITH LOGO --- */}
+                <div className="flex items-center gap-12">
+                    <Link href="/" className="group flex items-center gap-4">
+                        {/* THE LOGO IMAGE */}
+                        <div className="relative w-18 h-18">
+                            <Image
+                                src="/logo.png" // Path to your logo in the public folder
+                                alt="Flynn's Forge Logo"
+                                fill
+                                className="object-contain transition-transform duration-500 group-hover:scale-110"
+                            />
                         </div>
+
+                        {/* THE BRAND TEXT */}
+                        <div className="flex flex-col leading-none">
+                            <span className="text-2xl font-bold uppercase tracking-tighter italic text-black">
+                                Flynn's
+                            </span>
+                            <span className="text-[9px] font-bold uppercase tracking-[0.4em] text-[#064e3b]">
+                                Forge
+                            </span>
+                        </div>
+                    </Link>
+
+                    {/* Navigation */}
+                    <div className="hidden md:flex gap-10 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">
+                        <Link href="/shop" className="hover:text-black transition-colors">Collections</Link>
+                        <Link href="/about" className="hover:text-black transition-colors">The Forge</Link>
+                        <Link href="/contact" className="hover:text-black transition-colors">Contact</Link>
+                    </div>
+                </div>
+                {/* --- END BRAND IDENTITY --- */}
+
+                {/* Utility Icons */}
+                <div className="flex items-center gap-6">
+                    <div className="hidden sm:flex items-center gap-6 border-r border-gray-200 pr-6 mr-2">
+                        <Search className="w-4 h-4 text-black cursor-pointer hover:text-[#064e3b] transition-colors" />
                     </div>
 
-                    <div className="flex items-center gap-4">
-                        <Search className="w-6 h-6 cursor-pointer hover:text-blue-600" />
-                        <User className="w-6 h-6 cursor-pointer" />
-                        <Link href="/cart" className="relative bg-white border-2 border-gray-200 p-2 rounded-full hover:bg-gray-50 transition-colors">
-                            <ShoppingCart className="w-6 h-6" />
-                            <span className="absolute -top-1 -right-1 bg-[#206db5] text-white text-[10px] font-bold px-1.5 rounded-full">0</span>
-                        </Link>
-                    </div>
+                    <Link href="/cart" className="group flex items-center gap-3">
+                        <div className="relative">
+                            <ShoppingBag className="w-5 h-5 text-black group-hover:text-[#064e3b] transition-colors" />
+                            <span className="absolute -bottom-1 -right-1 bg-[#064e3b] text-white text-[8px] font-bold w-4 h-4 flex items-center justify-center rounded-full">
+                                0
+                            </span>
+                        </div>
+                        <span className="hidden sm:inline text-[10px] font-bold uppercase tracking-widest text-black">
+                            Bag
+                        </span>
+                    </Link>
+
+                    <button className="md:hidden p-2">
+                        <Menu className="w-6 h-6 text-black" />
+                    </button>
                 </div>
             </nav>
         </header>
+
         <main>{children}</main>
+
+        <footer className="bg-white border-t border-gray-100 py-20 px-6">
+            <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
+                <div className="space-y-4">
+                    <span className="text-xl font-bold uppercase italic tracking-tighter">Flynn's Forge</span>
+                    <p className="text-[10px] font-medium text-gray-500 max-w-xs leading-relaxed uppercase tracking-widest">
+                        High-fidelity 3D manufacturing & digital architectural design.
+                    </p>
+                </div>
+                <div className="grid grid-cols-2 gap-20">
+                    <div className="flex flex-col gap-4">
+                        <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#064e3b]">Inquiries</span>
+                        <a href="mailto:studio@flynnsforge.com" className="text-sm font-light hover:underline decoration-1 underline-offset-4">studio@flynnsforge.com</a>
+                    </div>
+                    <div className="flex flex-col gap-4">
+                        <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#064e3b]">Social</span>
+                        <a href="#" className="text-sm font-light hover:underline decoration-1 underline-offset-4">Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-gray-50 flex justify-between items-center text-[9px] font-bold uppercase tracking-widest text-gray-400">
+                <p>© {new Date().getFullYear()} Flynn's Forge</p>
+                <p>Designed for Excellence</p>
+            </div>
+        </footer>
         </body>
         </html>
     );

@@ -1,12 +1,12 @@
 import React from 'react';
 import Image from 'next/image';
-import { ShoppingBag, Star, Info, Zap } from 'lucide-react';
+import { ShoppingBag, ArrowRight } from 'lucide-react';
 
 interface Product {
     id: string;
     name: string;
     price: number;
-    image: string; // Now refers to a path like "/products/dragon.webp"
+    image: string;
     category: string;
     badge: string | null;
     rating: number;
@@ -15,13 +15,13 @@ interface Product {
 }
 
 const PRODUCTS: Product[] = [
-    { id: '1', name: 'Flexible Dragon', price: 24.99, image: '/products/dragon.jpg', category: 'Animals', badge: 'New', rating: 5, reviews: 12, isNew: false },
-    { id: '2', name: 'Mechanical Gear Box', price: 39.99, image: '/products/mechgearbox.webp', category: 'Technic', badge: 'Exclusive', rating: 4, reviews: 8, isNew: false },
-    { id: '3', name: 'Custom Lithophane', price: 19.99, image: '/products/litho.jpeg', category: 'Decor', badge: null, rating: 5, reviews: 24, isNew: false },
-    { id: '4', name: 'Emerald Wyvern', price: 45.99, image: '/products/wyvern.jpg', category: 'Animals', badge: 'Retiring Soon', rating: 5, reviews: 15, isNew: false },
-    { id: '5', name: 'Clockwork Heart', price: 34.99, image: '/products/heart.jpeg', category: 'Technic', badge: null, rating: 4, reviews: 6, isNew: false },
-    { id: '6', name: 'Space Explorer', price: 12.99, image: '/products/astronaut.png', category: 'Space', badge: 'Popular', rating: 5, reviews: 3, isNew: false },
-    { id: '7', name: 'Planetary Gear Fidget', price: 9.99, image: '/products/planetarygear.png', category: 'Space', badge: 'New', rating: 5, reviews: 2, isNew: true}
+    { id: '1', name: 'Flexible Dragon', price: 24.99, image: '/products/dragon.jpg', category: 'COLLECTION 01', badge: 'NEW', rating: 5, reviews: 12, isNew: false },
+    { id: '2', name: 'Mechanical Gear Box', price: 39.99, image: '/products/mechgearbox.webp', category: 'TECHNIC', badge: 'EXCL', rating: 4, reviews: 8, isNew: false },
+    { id: '3', name: 'Custom Lithophane', price: 19.99, image: '/products/litho.jpeg', category: 'DECOR', badge: null, rating: 5, reviews: 24, isNew: false },
+    { id: '4', name: 'Emerald Wyvern', price: 45.99, image: '/products/wyvern.jpg', category: 'COLLECTION 01', badge: 'LTD', rating: 5, reviews: 15, isNew: false },
+    { id: '5', name: 'Clockwork Heart', price: 34.99, image: '/products/heart.jpeg', category: 'TECHNIC', badge: null, rating: 4, reviews: 6, isNew: false },
+    { id: '6', name: 'Space Explorer', price: 12.99, image: '/products/astronaut.png', category: 'SPACE', badge: 'POPULAR', rating: 5, reviews: 3, isNew: false },
+    { id: '7', name: 'Planetary Gear Fidget', price: 9.99, image: '/products/planetarygear.png', category: 'SPACE', badge: 'NEW', rating: 5, reviews: 2, isNew: true}
 ];
 
 export default function UnifiedShop() {
@@ -30,28 +30,39 @@ export default function UnifiedShop() {
 
     return (
         <div className="min-h-screen bg-white">
-            <main className="max-w-7xl mx-auto px-4 py-12">
-                {/* FEATURED SHELF */}
-                <section className="mb-16 border-2 border-gray-100 rounded-2xl p-6 bg-gray-50/50">
-                    <div className="flex items-center gap-2 mb-6">
-                        <Zap className="w-5 h-5 text-[#d0021b] fill-[#d0021b]" />
-                        <h2 className="text-sm font-black uppercase tracking-tighter text-gray-900">
-                            New Arrivals & Featured Builds
-                        </h2>
-                        <Info className="w-4 h-4 text-gray-400 cursor-help" />
+            {/* Minimalist Hero Branding */}
+            <section className="pt-32 pb-16 px-6 border-b border-gray-100">
+                <div className="max-w-7xl mx-auto">
+                    <p className="text-[10px] font-bold tracking-[0.3em] uppercase mb-4 text-gray-400">Shop / Selected Works</p>
+                    <h1 className="text-5xl md:text-8xl font-light tracking-tight leading-none text-black">
+                        The <span className="font-bold italic">2025</span> Series
+                    </h1>
+                </div>
+            </section>
+
+            <main className="max-w-7xl mx-auto px-6 py-20">
+                {/* HIGH-END FEATURED SHELF (Amazon logic with April Ford style) */}
+                <section className="mb-32">
+                    <div className="flex items-center justify-between mb-12 border-b border-black pb-4">
+                        <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-black">Latest Releases</h2>
+                        <span className="text-[10px] text-gray-400 uppercase tracking-widest">Featured ({newProducts.length})</span>
                     </div>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-gray-200 border border-gray-200">
                         {newProducts.map((product) => (
                             <FeaturedProductCard key={product.id} product={product} />
                         ))}
                     </div>
                 </section>
 
-                {/* MAIN CATALOG */}
+                {/* MAIN CATALOG GRID */}
                 <section>
-                    <h2 className="lego-header text-3xl mb-8 border-b-4 border-[#ffcf00] inline-block">Full Catalog</h2>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div className="flex items-center justify-between mb-12 border-b border-gray-100 pb-4">
+                        <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-black">Entire Collection</h2>
+                        <span className="text-[10px] text-gray-400 uppercase tracking-widest">Showing {mainCatalog.length} items</span>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16">
                         {mainCatalog.map((product) => (
                             <ShopProductCard key={product.id} product={product} />
                         ))}
@@ -68,31 +79,23 @@ interface ProductProps {
 
 function FeaturedProductCard({ product }: ProductProps) {
     return (
-        <div className="brick-card flex flex-col sm:flex-row p-0 overflow-hidden hover:border-[#206db5]">
-            <div className="w-full sm:w-48 bg-white relative min-h-[200px] border-r-2 border-gray-100">
+        <div className="bg-white p-8 md:p-12 flex flex-col md:flex-row items-center gap-10 group transition-all duration-700">
+            <div className="w-full md:w-1/2 aspect-square relative grayscale hover:grayscale-0 transition-all duration-700 overflow-hidden">
                 <Image
                     src={product.image}
                     alt={product.name}
                     fill
-                    className="object-contain p-4"
+                    className="object-contain p-4 group-hover:scale-105 transition-transform duration-1000"
                 />
             </div>
-            <div className="p-6 flex-1 flex flex-col">
-                <div className="bg-[#ffcf00] text-black text-[10px] font-black px-2 py-0.5 rounded-sm self-start mb-2 uppercase italic">
-                    New Release
+            <div className="flex-1 space-y-6">
+                <div>
+                    <p className="text-[9px] font-bold tracking-[0.2em] text-gray-400 mb-2">{product.category}</p>
+                    <h3 className="text-3xl font-bold uppercase italic leading-tight text-black">{product.name}</h3>
                 </div>
-                <h3 className="lego-header text-xl mb-1">{product.name}</h3>
-                <div className="flex items-center gap-2 mb-3">
-                    <div className="flex text-[#e6bb00]">
-                        {[...Array(5)].map((_, i) => (
-                            <Star key={i} className={`w-3 h-3 ${i < product.rating ? 'fill-current' : 'text-gray-200'}`} />
-                        ))}
-                    </div>
-                    <span className="text-xs font-black text-gray-900">{product.reviews} Reviews</span>
-                </div>
-                <p className="text-2xl font-black text-black mb-4">${product.price.toFixed(2)}</p>
-                <button className="btn-brick mt-auto bg-[#ffcf00] hover:bg-black hover:text-white py-3 text-sm text-black w-full px-6 flex items-center justify-center gap-2">
-                    <ShoppingBag className="w-4 h-4" /> Add to Bag
+                <p className="text-2xl font-light text-black tracking-tighter">${product.price.toFixed(2)}</p>
+                <button className="w-full bg-black text-white px-8 py-4 uppercase text-[10px] font-bold tracking-[0.2em] hover:bg-gray-800 transition-colors flex items-center justify-center gap-3">
+                    Add to Bag <ArrowRight className="w-4 h-4" />
                 </button>
             </div>
         </div>
@@ -101,28 +104,33 @@ function FeaturedProductCard({ product }: ProductProps) {
 
 function ShopProductCard({ product }: ProductProps) {
     return (
-        <div className="brick-card group p-4 flex flex-col h-full">
-            <div className="aspect-square bg-gray-50 relative rounded-lg mb-4 overflow-hidden border-2 border-gray-100 shadow-inner">
+        <div className="group flex flex-col cursor-pointer">
+            <div className="relative aspect-[3/4] bg-[#f8f8f8] mb-8 overflow-hidden">
+                {product.badge && (
+                    <span className="absolute top-6 left-6 z-10 text-[9px] font-bold tracking-widest uppercase bg-black text-white px-3 py-1">
+                        {product.badge}
+                    </span>
+                )}
                 <Image
                     src={product.image}
                     alt={product.name}
                     fill
-                    className="object-contain p-6 group-hover:scale-110 transition-transform duration-300"
+                    className="object-contain p-10 group-hover:scale-105 transition-transform duration-700"
                 />
             </div>
-            <p className="text-[10px] font-black uppercase text-[#206db5] mb-1 tracking-widest">{product.category}</p>
-            <h3 className="lego-header text-lg mb-2 group-hover:text-[#206db5] leading-tight">{product.name}</h3>
-            <div className="flex items-center gap-1.5 mb-3">
-                <div className="flex text-[#e6bb00]">
-                    {[...Array(5)].map((_, i) => (
-                        <Star key={i} className={`w-3 h-3 ${i < product.rating ? 'fill-current' : 'text-gray-200'}`} />
-                    ))}
+
+            <div className="flex justify-between items-start">
+                <div className="space-y-1">
+                    <p className="text-[9px] font-bold tracking-[0.2em] text-gray-400 uppercase">{product.category}</p>
+                    <h3 className="text-lg font-bold uppercase tracking-tighter text-black leading-none group-hover:underline decoration-1 underline-offset-4">
+                        {product.name}
+                    </h3>
                 </div>
-                <span className="text-xs font-black text-gray-900">({product.reviews})</span>
+                <p className="text-lg font-light tracking-tighter text-black">${product.price.toFixed(2)}</p>
             </div>
-            <p className="text-2xl font-black mb-4 text-black">${product.price.toFixed(2)}</p>
-            <button className="btn-brick bg-[#ffcf00] hover:bg-black hover:text-white text-black py-3 rounded-md text-xs flex items-center justify-center gap-2">
-                <ShoppingBag className="w-4 h-4" /> Add to Bag
+
+            <button className="mt-8 border border-black text-black px-8 py-3 uppercase text-[9px] font-bold tracking-[0.2em] hover:bg-black hover:text-white transition-all duration-300">
+                Purchase Item
             </button>
         </div>
     );

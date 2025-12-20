@@ -1,98 +1,100 @@
 import React from 'react';
-import { Printer, Zap, Heart, ShieldCheck } from 'lucide-react';
+import Image from 'next/image';
+import { ArrowRight, Printer, Target, Shield, Zap } from 'lucide-react';
 
 export default function AboutPage() {
     return (
-        <div className="min-h-screen bg-white">
-            {/* Hero Section */}
-            <section className="bg-[#206db5] py-20 text-white overflow-hidden relative">
-                {/* Decorative Brick Pattern (Optional Visual) */}
-                <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-                    <div className="grid grid-cols-8 gap-4 p-4">
-                        {[...Array(16)].map((_, i) => (
-                            <div key={i} className="w-12 h-12 border-4 border-white rounded-full" />
-                        ))}
-                    </div>
+        <div className="min-h-screen bg-white text-black">
+            {/* Editorial Hero */}
+            <section className="relative h-[80vh] flex items-center justify-center overflow-hidden bg-[#f8f8f8]">
+                <div className="absolute inset-0 z-0">
+                    {/* Replace with a high-res shot of your 3D printing studio or a close-up of a model */}
+                    <div className="w-full h-full bg-[url('/images/about-hero.jpg')] bg-cover bg-center grayscale opacity-20" />
                 </div>
 
-                <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
-                    <h1 className="text-5xl md:text-7xl font-black uppercase italic tracking-tighter mb-6">
-                        Build Your World
+                <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
+                    <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-6 text-[#064e3b]">Established 2025</p>
+                    <h1 className="text-6xl md:text-9xl font-light tracking-tighter leading-none mb-8">
+                        The <span className="font-bold italic">Studio</span>
                     </h1>
-                    <p className="text-xl md:text-2xl font-bold leading-relaxed">
-                        At O3Den Prints, we believe that every great idea starts with a single block.
-                        We turn digital dreams into physical reality, one layer at a time.
+                    <div className="w-24 h-px bg-[#064e3b] mx-auto mb-8"></div>
+                    <p className="text-lg md:text-2xl font-light max-w-2xl mx-auto leading-relaxed tracking-tight">
+                        O3Den is a creative collective specializing in high-fidelity 3D manufacturing and digital architectural design.
                     </p>
                 </div>
             </section>
 
-            {/* Our Story - Grid Layout */}
-            <section className="py-20 max-w-7xl mx-auto px-4">
-                <div className="grid md:grid-cols-2 gap-12 items-center">
-                    <div className="brick-card p-2 bg-[#ffcf00] rotate-1">
-                        <div className="bg-gray-100 aspect-video rounded-lg flex items-center justify-center text-8xl">
-                            🏗️
+            {/* Vision Section - Split Layout */}
+            <section className="py-32 px-6">
+                <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-24 items-center">
+                    <div className="relative aspect-[4/5] bg-[#f8f8f8] overflow-hidden group">
+                        {/* Placeholder for a high-end process photo */}
+                        <div className="absolute inset-0 bg-[#064e3b] mix-blend-multiply opacity-0 group-hover:opacity-10 transition-opacity duration-700"></div>
+                        <Image
+                            src="/images/process.jpg"
+                            alt="Design Process"
+                            fill
+                            className="object-cover grayscale"
+                        />
+                    </div>
+
+                    <div className="space-y-8">
+                        <h2 className="text-4xl md:text-6xl font-bold italic leading-none">Form meets <br/>Function.</h2>
+                        <p className="text-lg font-light text-gray-700 leading-relaxed">
+                            Our philosophy is rooted in the intersection of traditional aesthetics and modern additive manufacturing. We don't just print; we curate experiences through physical form.
+                        </p>
+                        <p className="text-gray-500 font-medium">
+                            Every model in the O3Den collection undergoes rigorous testing for mechanical integrity and visual balance. We utilize custom resins and polymers to ensure a finish that rivals traditional craftsmanship.
+                        </p>
+                        <div className="pt-6">
+                            <button className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.3em] group">
+                                Our Methodology
+                                <span className="p-4 rounded-full border border-gray-200 group-hover:bg-[#064e3b] group-hover:text-white transition-all duration-500">
+                                    <ArrowRight className="w-4 h-4" />
+                                </span>
+                            </button>
                         </div>
                     </div>
-                    <div className="space-y-6">
-                        <h2 className="lego-header text-4xl italic">The Story Behind the Prints</h2>
-                        <p className="text-gray-900 font-bold leading-relaxed">
-                            O3Den Prints started in a small workshop with one printer and a massive imagination.
-                            Our goal was simple: to create 3D models that weren&apos;t just &quot;prints&quot; but
-                            high-quality pieces of art that you can build, play with, and display.
-                        </p>
-                        <p className="text-gray-700">
-                            Today, we specialize in articulated creatures, complex mechanical builds,
-                            and custom home decor. Every model is tested across dozens of machines to
-                            ensure that when you hit &quot;print&quot; it works perfectly every time.
-                        </p>
-                    </div>
                 </div>
             </section>
 
-            {/* Core Values - Modular Grid */}
-            <section className="bg-gray-50 py-20">
-                <div className="max-w-7xl mx-auto px-4">
-                    <h2 className="lego-header text-4xl mb-12 text-center">Our Core Pillars</h2>
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <ValueCard
-                            icon={<Zap className="w-8 h-8 text-white" />}
+            {/* Core Values - Minimalist Grid */}
+            <section className="py-32 bg-[#f8f8f8] px-6">
+                <div className="max-w-7xl mx-auto">
+                    <div className="mb-20">
+                        <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-[#064e3b] mb-4">Values</h2>
+                        <h3 className="text-4xl font-light italic">Standard of Excellence</h3>
+                    </div>
+
+                    <div className="grid md:grid-cols-3 gap-16">
+                        <ValueItem
+                            icon={<Target className="w-6 h-6" />}
                             title="Precision"
-                            color="bg-[#d0021b]"
-                            desc="We obsess over tolerances. Our mechanical builds click together like perfect bricks."
+                            desc="Micron-level accuracy in every mechanical gear and articulated joint we produce."
                         />
-                        <ValueCard
-                            icon={<Heart className="w-8 h-8 text-white" />}
-                            title="Creativity"
-                            color="bg-[#206db5]"
-                            desc="We don't just follow trends; we design unique models you won't find anywhere else."
+                        <ValueItem
+                            icon={<Shield className="w-6 h-6" />}
+                            title="Integrity"
+                            desc="Proprietary materials designed for longevity, durability, and a premium tactile feel."
                         />
-                        <ValueCard
-                            icon={<ShieldCheck className="w-8 h-8 text-white" />}
-                            title="Quality"
-                            color="bg-[#008542]"
-                            desc="Strength matters. We optimize our STL files for maximum durability and detail."
-                        />
-                        <ValueCard
-                            icon={<Printer className="w-8 h-8 text-white" />}
-                            title="Community"
-                            color="bg-[#ffcf00]"
-                            desc="Join thousands of builders worldwide. We love seeing what you create with our files!"
-                            darkText
+                        <ValueItem
+                            icon={<Zap className="w-6 h-6" />}
+                            title="Innovation"
+                            desc="Constantly pushing the boundaries of what's possible in the consumer 3D space."
                         />
                     </div>
                 </div>
             </section>
 
-            {/* Join the Build CTA */}
-            <section className="py-20 text-center">
-                <div className="max-w-2xl mx-auto px-4">
-                    <h2 className="lego-header text-4xl mb-6">Ready to start?</h2>
-                    <p className="text-gray-700 font-bold mb-8 uppercase tracking-tight">
-                        Explore our latest catalog and find your next project.
-                    </p>
-                    <a href="/shop" className="btn-brick inline-block bg-[#ffcf00] text-black px-12 py-5 text-xl font-black">
-                        Back to the Shop
+            {/* Closing CTA */}
+            <section className="py-40 text-center px-6">
+                <div className="max-w-4xl mx-auto border-t border-gray-100 pt-20">
+                    <h2 className="text-5xl md:text-8xl font-bold tracking-tighter italic mb-12">Elevate the <br/>Ordinary.</h2>
+                    <a
+                        href="/shop"
+                        className="inline-block bg-black text-white px-12 py-5 uppercase text-[10px] font-bold tracking-[0.3em] hover:bg-[#064e3b] transition-colors duration-500"
+                    >
+                        Browse the 2025 Collection
                     </a>
                 </div>
             </section>
@@ -100,22 +102,14 @@ export default function AboutPage() {
     );
 }
 
-interface ValueCardProps {
-    icon: React.ReactNode;
-    title: string;
-    desc: string;
-    color: string;
-    darkText?: boolean;
-}
-
-function ValueCard({ icon, title, desc, color, darkText }: ValueCardProps) {
+function ValueItem({ icon, title, desc }: { icon: React.ReactNode, title: string, desc: string }) {
     return (
-        <div className="brick-card flex flex-col items-start p-8 group">
-            <div className={`${color} p-4 rounded-xl mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)] group-hover:-rotate-6 transition-transform`}>
+        <div className="space-y-6">
+            <div className="text-[#064e3b]">
                 {icon}
             </div>
-            <h3 className="lego-header text-2xl mb-4">{title}</h3>
-            <p className={`font-bold leading-snug ${darkText ? 'text-gray-900' : 'text-gray-700'}`}>
+            <h4 className="text-xl font-bold uppercase tracking-tighter">{title}</h4>
+            <p className="text-gray-500 font-medium leading-relaxed text-sm">
                 {desc}
             </p>
         </div>
