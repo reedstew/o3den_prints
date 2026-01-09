@@ -1,6 +1,9 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 import { ShoppingBag, ArrowRight } from 'lucide-react';
+import { useShop } from '@/context/ShopContext'; // Import the hook
 
 interface Product {
     id: string;
@@ -41,7 +44,7 @@ export default function UnifiedShop() {
             </section>
 
             <main className="max-w-7xl mx-auto px-6 py-20">
-                {/* HIGH-END FEATURED SHELF (Amazon logic with April Ford style) */}
+                {/* HIGH-END FEATURED SHELF */}
                 <section className="mb-32">
                     <div className="flex items-center justify-between mb-12 border-b border-black pb-4">
                         <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-black">Latest Releases</h2>
@@ -78,6 +81,8 @@ interface ProductProps {
 }
 
 function FeaturedProductCard({ product }: ProductProps) {
+    const { addToCart } = useShop(); // Hook connection
+
     return (
         <div className="bg-white p-8 md:p-12 flex flex-col md:flex-row items-center gap-10 group transition-all duration-700">
             <div className="w-full md:w-1/2 aspect-square relative grayscale hover:grayscale-0 transition-all duration-700 overflow-hidden">
@@ -94,7 +99,10 @@ function FeaturedProductCard({ product }: ProductProps) {
                     <h3 className="text-3xl font-bold uppercase italic leading-tight text-black">{product.name}</h3>
                 </div>
                 <p className="text-2xl font-light text-black tracking-tighter">${product.price.toFixed(2)}</p>
-                <button className="w-full bg-black text-white px-8 py-4 uppercase text-[10px] font-bold tracking-[0.2em] hover:bg-gray-800 transition-colors flex items-center justify-center gap-3">
+                <button
+                    onClick={() => addToCart({ ...product })}
+                    className="w-full bg-black text-white px-8 py-4 uppercase text-[10px] font-bold tracking-[0.2em] hover:bg-[#064e3b] transition-colors flex items-center justify-center gap-3"
+                >
                     Add to Bag <ArrowRight className="w-4 h-4" />
                 </button>
             </div>
@@ -103,6 +111,8 @@ function FeaturedProductCard({ product }: ProductProps) {
 }
 
 function ShopProductCard({ product }: ProductProps) {
+    const { addToCart } = useShop(); // Hook connection
+
     return (
         <div className="group flex flex-col cursor-pointer">
             <div className="relative aspect-[3/4] bg-[#f8f8f8] mb-8 overflow-hidden">
@@ -129,8 +139,11 @@ function ShopProductCard({ product }: ProductProps) {
                 <p className="text-lg font-light tracking-tighter text-black">${product.price.toFixed(2)}</p>
             </div>
 
-            <button className="mt-8 border border-black text-black px-8 py-3 uppercase text-[9px] font-bold tracking-[0.2em] hover:bg-black hover:text-white transition-all duration-300">
-                Purchase Item
+            <button
+                onClick={() => addToCart({ ...product })}
+                className="mt-8 border border-black text-black px-8 py-3 uppercase text-[9px] font-bold tracking-[0.2em] hover:bg-black hover:text-white transition-all duration-300"
+            >
+                Add to Bag
             </button>
         </div>
     );
