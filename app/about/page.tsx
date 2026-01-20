@@ -19,7 +19,7 @@ export default function AboutPage() {
                     </h1>
                     <div className="w-24 h-px bg-[#064e3b] mx-auto mb-8"></div>
                     <p className="text-lg md:text-2xl font-light max-w-2xl mx-auto leading-relaxed tracking-tight">
-                        O3Den is a creative collective specializing in high-fidelity 3D manufacturing and digital architectural design.
+                        Flynn&apos;s Forge is a creative collective specializing in high-fidelity 3D manufacturing and digital architectural design.
                     </p>
                 </div>
             </section>
