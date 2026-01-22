@@ -18,7 +18,7 @@ interface Product {
 }
 
 const PRODUCTS: Product[] = [
-    { id: '1', name: 'Flexible Dragon', price: 24.99, image: '/products/dragon.jpg', category: 'COLLECTION 01', badge: 'NEW', rating: 5, reviews: 12, isNew: false },
+    { id: '1', name: 'Flexible Dragon', price: 24.99, image: '/products/dragon.jpeg', category: 'COLLECTION 01', badge: 'NEW', rating: 5, reviews: 12, isNew: false },
     { id: '2', name: 'Mechanical Gear Box', price: 39.99, image: '/products/mechgearbox.webp', category: 'TECHNIC', badge: 'EXCL', rating: 4, reviews: 8, isNew: false },
     { id: '3', name: 'Custom Lithophane', price: 19.99, image: '/products/litho.jpeg', category: 'DECOR', badge: null, rating: 5, reviews: 24, isNew: false },
     { id: '4', name: 'Emerald Wyvern', price: 45.99, image: '/products/wyvern.jpg', category: 'COLLECTION 01', badge: 'LTD', rating: 5, reviews: 15, isNew: false },
