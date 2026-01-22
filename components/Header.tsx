@@ -2,11 +2,13 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { ShoppingBag, Search, Menu } from 'lucide-react';
+import { ShoppingBag, Search, Menu, X, ArrowRight } from 'lucide-react'; // Added X and ArrowRight
 import { useShop } from '@/context/ShopContext';
+import { useState } from 'react'; // Import useState
 
 export default function Header() {
     const { toggleCart, cart } = useShop();
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     // Calculate total item count
     const itemCount = cart.reduce((acc, item) => acc + item.quantity, 0);
@@ -17,7 +19,7 @@ export default function Header() {
 
                 {/* --- BRAND IDENTITY --- */}
                 <div className="flex items-center gap-12">
-                    <Link href="/" className="group flex items-center gap-4">
+                    <Link href="/" className="group flex items-center gap-4 z-[110] relative">
                         <div className="relative w-12 h-12 md:w-16 md:h-16">
                             {/* Ensure width/height matches your actual logo ratio */}
                             <Image
@@ -37,6 +39,7 @@ export default function Header() {
                         </div>
                     </Link>
 
+                    {/* Desktop Navigation */}
                     <div className="hidden md:flex gap-10 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">
                         <Link href="/shop" className="hover:text-black transition-colors">Collections</Link>
                         <Link href="/about" className="hover:text-black transition-colors">The Forge</Link>
@@ -45,7 +48,7 @@ export default function Header() {
                 </div>
 
                 {/* --- UTILITIES --- */}
-                <div className="flex items-center gap-6">
+                <div className="flex items-center gap-6 z-[110] relative">
                     <div className="hidden sm:flex items-center gap-6 border-r border-gray-200 pr-6 mr-2">
                         <Search className="w-4 h-4 text-black cursor-pointer hover:text-[#064e3b] transition-colors" />
                     </div>
@@ -65,11 +68,57 @@ export default function Header() {
                         </span>
                     </button>
 
-                    <button className="md:hidden p-2">
-                        <Menu className="w-6 h-6 text-black" />
+                    {/* MOBILE MENU TOGGLE */}
+                    <button
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        className="md:hidden p-2 hover:bg-gray-100 rounded-full transition-colors"
+                    >
+                        {isMobileMenuOpen ? (
+                            <X className="w-6 h-6 text-black" />
+                        ) : (
+                            <Menu className="w-6 h-6 text-black" />
+                        )}
                     </button>
                 </div>
             </nav>
+
+            {/* --- MOBILE MENU OVERLAY --- */}
+            {isMobileMenuOpen && (
+                <div className="fixed inset-0 top-0 bg-white z-[100] pt-32 px-6 md:hidden animate-in slide-in-from-top-10 duration-200 h-screen overflow-y-auto">
+                    <div className="flex flex-col space-y-8">
+                        <MobileLink href="/shop" onClick={() => setIsMobileMenuOpen(false)}>
+                            Collections
+                        </MobileLink>
+                        <MobileLink href="/about" onClick={() => setIsMobileMenuOpen(false)}>
+                            The Forge
+                        </MobileLink>
+                        <MobileLink href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+                            Contact
+                        </MobileLink>
+
+                        <div className="pt-8 border-t border-gray-100 mt-8 space-y-4">
+                            <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Account</p>
+                            <Link href="/login" className="flex items-center gap-2 text-sm font-medium">
+                                Sign In <ArrowRight className="w-4 h-4" />
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            )}
         </header>
+    );
+}
+
+// Helper component for consistent mobile link styling
+function MobileLink({ href, children, onClick }: { href: string; children: React.ReactNode; onClick: () => void }) {
+    return (
+        <Link
+            href={href}
+            onClick={onClick}
+            className="text-4xl font-light tracking-tighter hover:text-[#064e3b] transition-colors flex items-center justify-between group"
+        >
+            {children}
+            <ArrowRight className="w-6 h-6 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#064e3b]" />
+        </Link>
     );
 }
