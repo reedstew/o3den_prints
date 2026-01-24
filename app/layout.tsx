@@ -31,13 +31,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <div className="space-y-4">
                         <span className="text-xl font-bold uppercase italic tracking-tighter">Flynn&apos;s Forge</span>
                         <p className="text-[10px] font-medium text-gray-500 max-w-xs leading-relaxed uppercase tracking-widest">
-                            High-fidelity 3D manufacturing & digital architectural design.
+                            High-fidelity local 3D printing.
                         </p>
                     </div>
                     <div className="grid grid-cols-2 gap-20">
                         <div className="flex flex-col gap-4">
                             <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#064e3b]">Inquiries</span>
-                            <a href="mailto:studio@flynnsforge.com" className="text-sm font-light hover:underline decoration-1 underline-offset-4">studio@flynnsforge.com</a>
+                            <a href="mailto:sales@flynnsforge.org" className="text-sm font-light hover:underline decoration-1 underline-offset-4">sales@flynnsforge.org</a>
                         </div>
                         <div className="flex flex-col gap-4">
                             <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#064e3b]">Social</span>

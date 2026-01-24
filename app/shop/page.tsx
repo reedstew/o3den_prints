@@ -18,13 +18,12 @@ interface Product {
 }
 
 const PRODUCTS: Product[] = [
-    { id: '1', name: 'Flexible Dragon', price: 24.99, image: '/products/dragon.jpg', category: 'COLLECTION 01', badge: 'NEW', rating: 5, reviews: 12, isNew: false },
-    { id: '2', name: 'Mechanical Gear Box', price: 39.99, image: '/products/mechgearbox.webp', category: 'TECHNIC', badge: 'EXCL', rating: 4, reviews: 8, isNew: false },
+    { id: '1', name: 'Flexible Dragon', price: 8.50, image: '/products/dragon.jpg', category: 'COLLECTION 01', badge: 'NEW', rating: 5, reviews: 12, isNew: false },
+    { id: '2', name: 'Planetary Gear Fidget', price: 5.50, image: '/products/planetarygear.png', category: 'SPACE', badge: 'NEW', rating: 5, reviews: 2, isNew: true},
     { id: '3', name: 'Custom Lithophane', price: 19.99, image: '/products/litho.jpeg', category: 'DECOR', badge: null, rating: 5, reviews: 24, isNew: false },
     { id: '4', name: 'Emerald Wyvern', price: 45.99, image: '/products/wyvern.jpg', category: 'COLLECTION 01', badge: 'LTD', rating: 5, reviews: 15, isNew: false },
-    { id: '5', name: 'Clockwork Heart', price: 34.99, image: '/products/heart.jpeg', category: 'TECHNIC', badge: null, rating: 4, reviews: 6, isNew: false },
-    { id: '6', name: 'Space Explorer', price: 12.99, image: '/products/astronaut.png', category: 'SPACE', badge: 'POPULAR', rating: 5, reviews: 3, isNew: false },
-    { id: '7', name: 'Planetary Gear Fidget', price: 9.99, image: '/products/planetarygear.png', category: 'SPACE', badge: 'NEW', rating: 5, reviews: 2, isNew: true}
+    { id: '5', name: 'Space Explorer', price: 12.99, image: '/products/astronaut.png', category: 'SPACE', badge: 'POPULAR', rating: 5, reviews: 3, isNew: false },
+    { id: '6', name: 'Mechanical Gear Box', price: 39.99, image: '/products/mechgearbox.webp', category: 'TECHNIC', badge: 'EXCL', rating: 4, reviews: 8, isNew: false }
 ];
 
 export default function UnifiedShop() {
@@ -38,7 +37,7 @@ export default function UnifiedShop() {
                 <div className="max-w-7xl mx-auto">
                     <p className="text-[10px] font-bold tracking-[0.3em] uppercase mb-4 text-gray-400">Shop / Selected Works</p>
                     <h1 className="text-5xl md:text-8xl font-light tracking-tight leading-none text-black">
-                        The <span className="font-bold italic">2025</span> Series
+                        The <span className="font-bold italic">2026</span> Series
                     </h1>
                 </div>
             </section>

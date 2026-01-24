@@ -5,8 +5,8 @@ export default function LandingPage() {
     return (
         <div className="min-h-screen bg-white text-black font-sans selection:bg-[#064e3b] selection:text-white">
             {/* Minimalist Studio Hero */}
-            <section className="relative min-h-screen flex flex-col justify-center pt-24 pb-12 overflow-hidden">
-                <div className="max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-12 gap-12 items-center">
+            <section className="relative min-h-[80vh] flex flex-col justify-center pt-4 pb-12 overflow-hidden">
+                <div className="max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-12 items-center">
 
                     {/* Text Column (5 cols) */}
                     <div className="lg:col-span-5 space-y-10 z-10 relative">
@@ -14,7 +14,7 @@ export default function LandingPage() {
                             <div className="flex items-center gap-4">
                                 <span className="h-px w-8 bg-[#064e3b]"></span>
                                 <span className="inline-block text-[10px] font-bold uppercase tracking-[0.4em] text-[#064e3b]">
-                                    Showcase / 2025
+                                    Showcase / 2026
                                 </span>
                             </div>
                             <h1 className="text-6xl md:text-8xl font-light tracking-tighter leading-[0.9]">
