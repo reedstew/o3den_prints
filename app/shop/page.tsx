@@ -37,7 +37,7 @@ export default function UnifiedShop() {
                 <div className="max-w-7xl mx-auto">
                     <p className="text-[10px] font-bold tracking-[0.3em] uppercase mb-4 text-gray-400">Shop / Selected Works</p>
                     <h1 className="text-5xl md:text-8xl font-light tracking-tight leading-none text-black">
-                        The <span className="font-bold italic">2026</span> Series
+                        The <span className="font-bold italic">2025</span> Series
                     </h1>
                 </div>
             </section>
