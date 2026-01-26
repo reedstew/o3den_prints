@@ -47,11 +47,11 @@ export default function AboutPage() {
 
                             <div className="space-y-6 text-lg text-gray-700 font-light leading-relaxed">
                                 <p>
-                                    Flynn’s Forge is a home-based 3D printing studio right here in Ogden. What started with a single printer has grown into a passion project driven by a moral compass.
+                                    Flynn’s Forge is a home-based 3D printing studio right here in Ogden, Utah. What started with a single printer has grown into a passion project driven by a moral compass.
                                 </p>
 
                                 <p>
-                                    We believe in fair pricing and community support. That’s why we operate on a <strong className="font-bold text-black border-b-2 border-[#064e3b]/30">1-for-1 Promise</strong>: every purchase results in a matching donation to a local charity. You get a great product; Ogden gets a helping hand.
+                                    We believe in fair pricing and community support. That’s why we operate on a <strong className="font-bold text-black border-b-2 border-[#064e3b]/30">1-for-1 Promise</strong>: every purchase results in a matching donation to a local charity. You get a great product; the community gets a helping hand.
                                 </p>
 
                                 <p className="text-base text-gray-500">
