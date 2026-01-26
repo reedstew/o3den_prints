@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { ArrowRight, Printer, Target, Shield, Zap } from 'lucide-react';
 
 export default function AboutPage() {
@@ -18,7 +19,7 @@ export default function AboutPage() {
                     </h1>
                     <div className="w-24 h-px bg-[#064e3b] mx-auto mb-8"></div>
                     <p className="text-lg md:text-2xl font-light max-w-2xl mx-auto leading-relaxed tracking-tight">
-                        Flynn&apos;s Forge is where imagination takes physical form through high-precision 3D printing and local craftsmanship.
+                        Flynn&apos;s Forge is where imagination takes physical form through high-precision 3D printing and local craftsmanship in Utah.
                     </p>
                 </div>
             </section>
@@ -26,31 +27,47 @@ export default function AboutPage() {
             {/* Vision Section - Split Layout */}
             <section className="py-32 px-6">
                 <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-24 items-center">
-                    <div className="relative aspect-[4/5] bg-[#f8f8f8] overflow-hidden group">
+                    {/* Added 'w-64' and 'mx-auto' directly to the relative container */}
+                    <div className="relative aspect-[4/5] w-80 mx-auto bg-[#f8f8f8] overflow-hidden group">
                         <div className="absolute inset-0 bg-[#064e3b] mix-blend-multiply opacity-0 group-hover:opacity-10 transition-opacity duration-700"></div>
                         <Image
-                            src="/images/flynn-working.jpg" 
+                            src="/flynnhiking.jpg"
                             alt="The Maker at Work"
                             fill
-                            className="object-cover grayscale"
+                            className="object-cover"
+                            sizes="(max-width: 768px) 100vw, 256px" // Good practice: helps performance
                         />
                     </div>
 
                     <div className="space-y-8">
-                        <h2 className="text-4xl md:text-6xl font-bold italic leading-none">Built with <br/>Purpose.</h2>
-                        <p className="text-lg font-light text-gray-700 leading-relaxed">
-                            Founded by an 11-year-old maker with a passion for engineering, Flynn’s Forge started with a single printer and a big idea: to create high-quality, custom gear for the local community.
-                        </p>
-                        <p className="text-gray-500 font-medium">
-                            Every item that leaves the Forge is personally inspected for quality. We don’t just hit print; we carefully calibrate every layer to ensure that every dragon, tool, or custom part is built to last.
-                        </p>
+                        <div className="space-y-6 max-w-2xl">
+                            <h2 className="text-4xl md:text-6xl font-bold italic leading-none text-gray-900">
+                                Built with <br/>Purpose.
+                            </h2>
+
+                            <div className="space-y-6 text-lg text-gray-700 font-light leading-relaxed">
+                                <p>
+                                    Flynn’s Forge is a home-based 3D printing studio right here in Ogden. What started with a single printer has grown into a passion project driven by a moral compass.
+                                </p>
+
+                                <p>
+                                    We believe in fair pricing and community support. That’s why we operate on a <strong className="font-bold text-black border-b-2 border-[#064e3b]/30">1-for-1 Promise</strong>: every purchase results in a matching donation to a local charity. You get a great product; Ogden gets a helping hand.
+                                </p>
+
+                                <p className="text-base text-gray-500">
+                                    <span className="font-bold text-gray-900 uppercase tracking-wider text-xs block mb-2">The Quality Standard</span>
+                                    Quality is personal here. We carefully calibrate every layer and hand-inspect every item. Whether it’s an articulated dragon or a functional tool, we don't ship it unless it's perfect.
+                                </p>
+                            </div>
+                        </div>
                         <div className="pt-6">
-                            <button className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.3em] group">
+                            {/* Changed <button> to <Link> and added href="/process" */}
+                            <Link href="/process" className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.3em] group">
                                 The Process
                                 <span className="p-4 rounded-full border border-gray-200 group-hover:bg-[#064e3b] group-hover:text-white transition-all duration-500">
-                                    <ArrowRight className="w-4 h-4" />
+                                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                                 </span>
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </div>

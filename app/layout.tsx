@@ -31,7 +31,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <div className="space-y-4">
                         <span className="text-xl font-bold uppercase italic tracking-tighter">Flynn&apos;s Forge</span>
                         <p className="text-[10px] font-medium text-gray-500 max-w-xs leading-relaxed uppercase tracking-widest">
-                            High-fidelity local 3D printing.
+                            High-fidelity 3D printing.
+                            <br/>
+                            Local to Ogden, UT USA
                         </p>
                     </div>
                     <div className="grid grid-cols-2 gap-20">
