@@ -28,12 +28,12 @@ export default function LandingPage() {
 
                             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
 
-                            <div className="absolute bottom-6 left-6 bg-white/90 backdrop-blur-md px-4 py-3 border border-white/20 shadow-lg flex items-center gap-3">
-                                <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
-                                <span className="text-[9px] font-bold uppercase tracking-widest text-black">
-                        Live Production
-                    </span>
-                            </div>
+                    {/*        <div className="absolute bottom-6 left-6 bg-white/90 backdrop-blur-md px-4 py-3 border border-white/20 shadow-lg flex items-center gap-3">*/}
+                    {/*            <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />*/}
+                    {/*            <span className="text-[9px] font-bold uppercase tracking-widest text-black">*/}
+                    {/*    Live Production*/}
+                    {/*</span>*/}
+                    {/*        </div>*/}
                         </div>
                     </div>
 
