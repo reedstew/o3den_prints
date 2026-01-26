@@ -128,7 +128,7 @@ export default function CartSidebar() {
                                 disabled={isSubmitting}
                                 className="w-full bg-black text-white py-4 uppercase text-[10px] font-bold tracking-[0.25em] hover:bg-[#064e3b] transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
                             >
-                                {isSubmitting ? 'Processing...' : 'Submit Enquiry'} <ArrowRight className="w-3 h-3" />
+                                {isSubmitting ? 'Processing...' : 'Submit Order'} <ArrowRight className="w-3 h-3" />
                             </button>
                         </form>
                     </div>

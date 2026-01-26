@@ -54,7 +54,7 @@ export default function ProcessPage() {
                         subtitle="Slicing & G-Code"
                         description="The 3D model is fed into a 'Slicer.' This software cuts the model into thousands of paper-thin horizontal layers and generates a path for the printer nozzle to follow (G-Code)."
                         icon={<Layers className="w-6 h-6" />}
-                        image="/process/slicing.gif"
+                        video="/process/slicing.mp4"
                     />
 
                     {/* Step 03: Printing */}
@@ -64,7 +64,7 @@ export default function ProcessPage() {
                         subtitle="Fused Deposition Modeling"
                         description="The printer heats eco-friendly PLA filament to 210°C. It extrudes this molten plastic through a 0.4mm nozzle, drawing the object layer by layer. Each layer fuses to the one below it instantly."
                         icon={<Cpu className="w-6 h-6" />}
-                        image="/images/process-printing.jpg"
+                        video="/process/printing.mp4"
                         isRightAligned
                     />
 
@@ -75,7 +75,7 @@ export default function ProcessPage() {
                         subtitle="Post-Processing"
                         description="Once the print cools, it's removed from the build plate. We hand-remove any support structures, sand down rough edges, and inspect the structural integrity of the part."
                         icon={<Hammer className="w-6 h-6" />}
-                        image="/images/process-finishing.jpg"
+                        video="/process/finishing.mp4"
                     />
 
                 </div>
@@ -93,7 +93,7 @@ export default function ProcessPage() {
 }
 
 // Reusable Step Component
-function ProcessStep({ number, title, subtitle, description, icon, image, isRightAligned = false }: any) {
+function ProcessStep({ number, title, subtitle, description, icon, image, video, isRightAligned = false }: any) {
     return (
         <div className={`grid md:grid-cols-2 gap-12 items-center ${isRightAligned ? 'md:flex-row-reverse' : ''}`}>
 
@@ -116,8 +116,18 @@ function ProcessStep({ number, title, subtitle, description, icon, image, isRigh
                     {number}
                 </span>
 
-                {/* LOGIC: If an image is provided, show it. Otherwise show the gradient placeholder */}
-                {image ? (
+                {/* LOGIC: Video > Image > Placeholder */}
+                {video ? (
+                    <video
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        className="absolute inset-0 w-full h-full object-cover z-10"
+                    >
+                        <source src={video} type="video/mp4" />
+                    </video>
+                ) : image ? (
                     <Image
                         src={image}
                         alt={title}
