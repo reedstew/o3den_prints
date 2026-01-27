@@ -2,12 +2,15 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
+// 1. Updated Type Definition
 type CartItem = {
     id: string;
+    productId: string;
     name: string;
     price: number;
     image: string;
     quantity: number;
+    selectedColor?: string;
 };
 
 type ShopContextType = {
@@ -23,13 +26,13 @@ type ShopContextType = {
 const ShopContext = createContext<ShopContextType | undefined>(undefined);
 
 export function ShopProvider({ children }: { children: React.ReactNode }) {
-    // 1. Initialize empty to match Server (avoids Hydration Mismatch)
     const [cart, setCart] = useState<CartItem[]>([]);
     const [isCartOpen, setIsCartOpen] = useState(false);
-    // We use a ref to track if the initial load has happened so we don't overwrite with empty []
-    const isLoaded = React.useRef(false);
 
-    // 2. Load from LocalStorage (Runs only once on client)
+    // Use state instead of ref to track loading status (Fixes ESLint warning)
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    // 1. Load from LocalStorage (Runs only once on mount)
     useEffect(() => {
         const savedCart = localStorage.getItem('o3d_cart');
         if (savedCart) {
@@ -39,20 +42,21 @@ export function ShopProvider({ children }: { children: React.ReactNode }) {
                 console.error('Failed to parse cart', e);
             }
         }
-        isLoaded.current = true;
+        setIsLoaded(true); // Mark as loaded
     }, []);
 
-    // 3. Save to LocalStorage (Runs whenever cart changes)
+    // 2. Save to LocalStorage (Runs only when cart changes AND we have finished loading)
     useEffect(() => {
-        // Only save if we have finished the initial load
-        if (isLoaded.current) {
+        if (isLoaded) {
             localStorage.setItem('o3d_cart', JSON.stringify(cart));
         }
-    }, [cart]);
+    }, [cart, isLoaded]);
 
     const addToCart = (newItem: Omit<CartItem, 'quantity'>) => {
         setCart((prev) => {
+            // Check if this specific variant (ID + Color) exists
             const existing = prev.find((item) => item.id === newItem.id);
+
             if (existing) {
                 return prev.map((item) =>
                     item.id === newItem.id ? { ...item, quantity: item.quantity + 1 } : item
