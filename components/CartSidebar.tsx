@@ -5,8 +5,6 @@ import { X, Trash2, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
 import Image from 'next/image';
 
-// REMOVED: Supabase client initialization (not needed here anymore)
-
 export default function CartSidebar() {
     const { cart, isCartOpen, toggleCart, removeFromCart, cartTotal, clearCart } = useShop();
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -23,7 +21,7 @@ export default function CartSidebar() {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    items: cart,
+                    items: cart, // The cart ALREADY contains the color data
                     total: cartTotal,
                     customer_email: email,
                 }),
@@ -39,7 +37,6 @@ export default function CartSidebar() {
             setEmail('');
 
         } catch (error) {
-            // FIX: Proper error handling instead of 'any'
             let message = 'An unexpected error occurred';
             if (error instanceof Error) {
                 message = error.message;
@@ -75,6 +72,7 @@ export default function CartSidebar() {
                         cart.map((item) => (
                             <div key={item.id} className="flex gap-4 group">
                                 <div className="relative w-20 h-20 bg-gray-50 flex items-center justify-center text-3xl select-none rounded-sm overflow-hidden shrink-0">
+                                    {/* Logic to show Real Image vs Emoji */}
                                     {(item.image.startsWith('/') || item.image.startsWith('http')) ? (
                                         <Image
                                             src={item.image}
@@ -89,7 +87,15 @@ export default function CartSidebar() {
 
                                 <div className="flex-1">
                                     <div className="flex justify-between items-start">
-                                        <h3 className="font-bold uppercase tracking-tight text-sm pr-4 line-clamp-2">{item.name}</h3>
+                                        <div>
+                                            <h3 className="font-bold uppercase tracking-tight text-sm pr-4 line-clamp-2">{item.name}</h3>
+                                            {/* --- NEW: DISPLAY SELECTED COLOR --- */}
+                                            {item.selectedColor && (
+                                                <p className="text-[10px] text-gray-500 uppercase tracking-widest mt-1">
+                                                    Color: {item.selectedColor}
+                                                </p>
+                                            )}
+                                        </div>
                                         <button onClick={() => removeFromCart(item.id)} className="text-gray-300 hover:text-red-600 transition-colors">
                                             <Trash2 className="w-4 h-4" />
                                         </button>
@@ -128,7 +134,7 @@ export default function CartSidebar() {
                                 disabled={isSubmitting}
                                 className="w-full bg-black text-white py-4 uppercase text-[10px] font-bold tracking-[0.25em] hover:bg-[#064e3b] transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
                             >
-                                {isSubmitting ? 'Processing...' : 'Submit Order'} <ArrowRight className="w-3 h-3" />
+                                {isSubmitting ? 'Processing...' : 'Submit Enquiry'} <ArrowRight className="w-3 h-3" />
                             </button>
                         </form>
                     </div>
