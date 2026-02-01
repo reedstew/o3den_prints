@@ -9,6 +9,7 @@ import { useShop } from '@/context/ShopContext';
 interface ProductColor {
     name: string;
     hex: string;
+    hex2?: string;
     price?: number; // <--- Optional override price
     image?: string; // <--- Optional image change
 }
@@ -32,7 +33,7 @@ const PRODUCTS: Product[] = [
     {
         id: '1',
         name: 'Articulated Crystal Dragon',
-        price: 8.50,
+        price: 6.99,
         image: '/products/dragon.jpeg', // Default image
         category: 'ANIMALS',
         badge: 'NEW',
@@ -40,16 +41,15 @@ const PRODUCTS: Product[] = [
         reviews: 12,
         isNew: true,
         colors: [
-            { name: 'Bone White', hex: '#fdf4e3'}, //, image: '/products/dragon_white.jpeg' }, // <--- Swaps to this
+            { name: 'White', hex: '#fdf4e3'}, //, image: '/products/dragon_white.jpeg' }, // <--- Swaps to this
             { name: 'Obsidian', hex: '#1a1a1a' }, //, image: '/products/dragon_black.jpeg' },  // <--- Swaps to this
-            { name: 'Silk Gold', hex: '#d4af37', price: 12.00 }, // No image? Uses default.
-            { name: 'Rainbow', hex: '#ff99cc', price: 10.00 }
+            { name: 'Rainbow', hex: '#4b369d', hex2: '#50A8B7', price: 8.99 }
         ]
     },
     {
         id: '2',
         name: 'Geometric Spinner',
-        price: 5.50,
+        price: 9.20,
         image: '/products/gearspinner.png',
         category: 'SPACE',
         badge: 'NEW',
@@ -57,9 +57,7 @@ const PRODUCTS: Product[] = [
         reviews: 2,
         isNew: true,
         colors: [
-            { name: 'Galaxy Black', hex: '#222222' },
-            { name: 'Neon Orange', hex: '#ff5f1f' },
-            { name: 'Steel Grey', hex: '#888888' }
+            { name: 'Grey/Blue', hex: '#888888', hex2: '#57B9FF' }
         ]
     }
 ];
@@ -174,11 +172,15 @@ function FeaturedProductCard({ product }: ProductProps) {
                                 className={`w-8 h-8 rounded-full border flex items-center justify-center transition-all ${
                                     selectedColor.name === color.name ? 'border-black scale-110' : 'border-transparent hover:scale-110'
                                 }`}
-                                style={{ backgroundColor: color.hex }}
-                                title={color.name}
+                                style={{
+                                    background: color.hex2
+                                        ? `linear-gradient(135deg, ${color.hex} 50%, ${color.hex2} 50%)` // Split effect
+                                        : color.hex
+                                }}
+                                title={`${color.name} ${color.price ? `($${color.price})` : ''}`}
                             >
                                 {selectedColor.name === color.name && (
-                                    <Check className={`w-4 h-4 ${['#fdf4e3', '#d4af37', '#ffffff'].includes(color.hex) ? 'text-black' : 'text-white'}`} />
+                                    <Check className="w-4 h-4 text-white drop-shadow-md" /> // Added shadow so it's visible on any color
                                 )}
                             </button>
                         ))}
