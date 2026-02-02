@@ -40,7 +40,7 @@ export default function Header() {
                     </Link>
 
                     {/* Desktop Navigation */}
-                    <div className="hidden md:flex gap-10 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">
+                    <div className="hidden md:flex gap-10 text-[16px] font-bold uppercase tracking-[0.2em] text-gray-400">
                         <Link href="/shop" className="hover:text-black transition-colors">Collections</Link>
                         <Link href="/about" className="hover:text-black transition-colors">The Forge</Link>
                         <Link href="/contact" className="hover:text-black transition-colors">Contact</Link>
