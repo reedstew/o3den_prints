@@ -22,7 +22,7 @@ export default function LandingPage() {
                                 className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000 ease-out"
                                 poster="/logo.png"
                             >
-                                <source src="/video/D_Printed_Tree_Video_Generation.mp4" type="video/mp4" />
+                                <source src="/video/flynnprinting.mp4" type="video/mp4" />
                                 Your browser does not support the video tag.
                             </video>
 
